@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import render
 from rest_framework import viewsets, permissions, generics
 from rest_framework.pagination import PageNumberPagination
+from rest_framework import serializers
 # Create your views here.
 
 from .serializers import StatSerializer, ActivitySerializer
@@ -32,6 +33,12 @@ class StatListCreateView(generics.ListCreateAPIView):
         return Stat.objects.filter(activity__id=self.kwargs['pk'])
 
     def perform_create(self, serializer):
+        same_act = Stat.objects.filter(activity=self.activity)
+        if same_act:
+            for stat in same_act:
+                if stat.timestamp == serializer.validated_data['timestamp']:
+                    raise serializers.ValidationError("Entry all ready exists for that day, please edit existing entry.")
+
         serializer.save(activity=self.activity)
 
 

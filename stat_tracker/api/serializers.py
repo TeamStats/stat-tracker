@@ -3,22 +3,32 @@ from django.contrib.auth.models import User
 import datetime
 from .models import Activity, Stat
 #from users.models import Profile
+from rest_framework.validators import UniqueTogetherValidator
+
 
 class StatSerializer(serializers.HyperlinkedModelSerializer):
     timestamp = serializers.DateField()
     url = serializers.HyperlinkedIdentityField(view_name='update_stat')
+    #activity = serializers.HyperlinkedRelatedField(view_name='activity-detail', read_only=True)
 
     class Meta:
         model = Stat
+        # validators = [
+        #     UniqueTogetherValidator(
+        #         queryset=Stat.objects.all(),
+        #         fields=('timestamp', 'activity')
+        #     )
+        # ]
         fields = ('url', 'stat', 'timestamp', )
 
-    def create(self, validated_data):
-        stat = Stat.objects.create(**validated_data)
-        stat.timestamp = datetime.date.today()
-        stat.save()
-        return stat
+    # def create(self, validated_data):
+    #     stat = Stat.objects.create(**validated_data)
+    #     stat.answer = validated_data[]
+    #     stat.save()
+    #     return stat
 
-    # def validate
+    # def validate(self, attrs):
+
 
 
 class ActivitySerializer(serializers.HyperlinkedModelSerializer):
