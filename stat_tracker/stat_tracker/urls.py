@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.contrib.auth import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', TemplateView.as_view(template_name="index.html")),
     url(r'^api/', include('api.urls')),
     url(r'^users/', include('users.urls', namespace='users')),
+    url(r'^activities/login/$', views.login, {'template_name': 'login.html'}, name="login"),
 ]

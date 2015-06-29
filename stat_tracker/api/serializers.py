@@ -18,6 +18,8 @@ class StatSerializer(serializers.HyperlinkedModelSerializer):
         stat.save()
         return stat
 
+    # def validate
+
 
 class ActivitySerializer(serializers.HyperlinkedModelSerializer):
     title = serializers.CharField(max_length=255)
