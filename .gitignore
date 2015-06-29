@@ -78,3 +78,5 @@ target/
 
 *.sqlite3
 
+# gulp node_modules
+node_modules
