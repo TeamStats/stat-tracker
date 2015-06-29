@@ -77,6 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'stat_tracker.wsgi.application'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Database
