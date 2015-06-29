@@ -4,8 +4,8 @@ from django.db import models
 
 class Activity(models.Model):
     title = models.CharField(max_length=255)
-    stat = models.ForeignKey(Stat)
-
 
 class Stat(models.Model):
-    timestamp = models.DateTimeField(null=True)
+    timestamp = models.DateField(null=True)
+    stat = models.IntegerField()
+    activity = models.ForeignKey(Activity)
