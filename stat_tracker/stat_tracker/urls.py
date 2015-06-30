@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^users/', include('users.urls', namespace='users')),
     url(r'^activities/login/$', views.login, {'template_name': 'login.html'}, name="login"),
     url(r'^activities/register/$', user_views.AddUserView.as_view(), name="user_register"),
+    url(r'^activities/logout/$', views.logout, {'next_page': 'login'}, name='logout'),
 ]
