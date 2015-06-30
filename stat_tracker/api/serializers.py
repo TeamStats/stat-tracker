@@ -13,21 +13,7 @@ class StatSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Stat
-        # validators = [
-        #     UniqueTogetherValidator(
-        #         queryset=Stat.objects.all(),
-        #         fields=('timestamp', 'activity')
-        #     )
-        # ]
         fields = ('url', 'stat', 'timestamp', )
-
-    # def create(self, validated_data):
-    #     stat = Stat.objects.create(**validated_data)
-    #     stat.answer = validated_data[]
-    #     stat.save()
-    #     return stat
-
-    # def validate(self, attrs):
 
 
 
