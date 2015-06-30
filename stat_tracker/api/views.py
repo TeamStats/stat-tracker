@@ -19,7 +19,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
     #pagination_class = StandardResultsSetPagination
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user.profile)
+        serializer.save(user=self.request.user)
 
 
 class StatListCreateView(generics.ListCreateAPIView):
