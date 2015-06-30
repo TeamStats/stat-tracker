@@ -8,15 +8,20 @@ var router = require('../router');
 router.route('activities/new', function () {
 	
 	showMain();
-	getCookie('csrftoken');  
+	 
 	$('.newactivity-form').on('submit', function(e){
 		e.preventDefault();
 		var data = $('#newAct').val();
 		console.log(data);
+		var csrftoken = getCookie('csrftoken'); 
 		$.ajax({
+			beforeSend: function (request){
+			console.log(csrftoken)
+            request.setRequestHeader('X-CSRFToken', csrftoken);
+           },
 			method: 'POST', 
 			url: '/api/activities/',
-			data: data
+			data: {'title': data}
   		}).done(function (data){
 			  alert('saved');
 			console.log(data);
