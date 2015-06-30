@@ -6,7 +6,7 @@ from . import views as api_views
 
 router = routers.DefaultRouter()
 
-router.register(r'activities', api_views.ActivityViewSet)
+router.register(r'activities', api_views.ActivityViewSet, base_name='activity')
 router.register(r'users', api_views.UserViewSet, base_name='user')
 
 urlpatterns = [

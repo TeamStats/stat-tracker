@@ -13,13 +13,16 @@ from .models import Stat, Activity
 # Create your views here.
 
 class ActivityViewSet(viewsets.ModelViewSet):
-    queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     #pagination_class = StandardResultsSetPagination
 
+    def get_queryset(self):
+        queryset = Activity.objects.filter(user=self.request.user)
+        return queryset
+
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user.profile)
+        serializer.save(user=self.request.user)
 
 
 class StatListCreateView(generics.ListCreateAPIView):
