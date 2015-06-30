@@ -1,3 +1,4 @@
+
 require = (function e(t, n, r) {
     function s(o, u) {
         if (!n[o]) {
@@ -23,7 +24,7 @@ require = (function e(t, n, r) {
 })({
     "views": [function (require, module, exports) {
         var views = {
-            "activities-new": "<h1> New Activity</h1>\n<form class=\"newactivity-form\">\n\t<input id=\"newAct\" placeholder=\"Activity Title\">\n\t<button class=\"create-activity\">Create</button>\n</form>",
+            "activities-new": "<h1>New Activity</h1>\n<form class=\"newactivity-form\">\n\t<input id=\"newAct\" placeholder=\"Activity Title\">\n\t<button class=\"create-activity\">Create</button>\n</form>",
             "activities": "<h1>Activities</h1>\n<a href=\"activities/login\">Login</a>\n<a class=\"new-activity\" href=\"#/activities/new\">Creat New Activity</a>\n"
         };
         if (typeof module !== "undefined" && module.exports) {
