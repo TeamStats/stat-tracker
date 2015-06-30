@@ -1,9 +1,6 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
 import datetime
 from .models import Activity, Stat
-from users.models import Profile
-#from users.models import Profile
 from rest_framework.validators import UniqueTogetherValidator
 
 
@@ -13,7 +10,7 @@ class StatSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Stat
-        fields = ('url', 'stat', 'timestamp', )
+        fields = ('url', 'id', 'stat', 'timestamp', )
 
 
 
