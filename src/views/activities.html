@@ -2,3 +2,11 @@
 <a href="activities/login/">Login</a>
 <a href="activities/register/">Register</a>
 <a class="new-activity" href="#/activities/new">Create New Activity</a>
+
+<% m.activities.forEach(function (activity) { %>
+	<li class="activity">
+      <a href="<%- activity.url %>">
+        <%- activity.title %>
+      </a>
+    </li>
+<% }) %>
