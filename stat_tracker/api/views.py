@@ -21,7 +21,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user.profile)
 
     def get_queryset(self):
-        queryset = Activity.objects.filter(user = self.request.user.profile)
+        queryset = Activity.objects.filter(user=self.request.user.profile)
         return queryset
 
 
@@ -60,5 +60,3 @@ class UserViewSet(viewsets.ModelViewSet):
         queryset = User.objects.filter(pk=self.request.user.pk)
         return queryset
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user.profile)
