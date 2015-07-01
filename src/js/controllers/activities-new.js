@@ -23,8 +23,8 @@ router.route('activities/new', function () {
 			url: '/api/activities/',
 			data: {'title': data}
   		}).done(function (data){
-			  alert('saved');
 			console.log(data);
+		
 		});
 	});
 });

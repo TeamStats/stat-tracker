@@ -8,7 +8,13 @@ var datepicker = require('../../../node_modules/jquery-ui/datepicker.js')
 
 
 router.route('activities/:id', function (Id) {
-	
+$.ajax({
+	method: 'GET', 
+	url: '/api/activities/'+Id+'/stat/'	
+	})
+	.done(function(data){
+		console.log(data);
+	});
 $.ajax({
 			method: 'GET', 
 			url: '/api/activities/'+Id
