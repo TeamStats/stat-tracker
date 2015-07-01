@@ -24,7 +24,7 @@ class ActivityViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save(user=self.request.user.profile)
 
 
 
@@ -44,6 +44,8 @@ class StatListCreateView(generics.ListCreateAPIView):
             for stat in same_act:
                 if stat.timestamp == serializer.validated_data['timestamp']:
                     raise serializers.ValidationError("Entry all ready exists for that day, please edit existing entry.")
+        if serializer.validated_data['timestamp'] > datetime.date.today():
+            raise serializers.ValidationError("Cannot enter stat for a future date")
 
         serializer.save(activity=self.activity)
 
