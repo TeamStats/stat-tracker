@@ -23,6 +23,10 @@ a {
   color: #00AB6F;
   text-decoration: none; }
 
+a:hover {
+  color: #05FCA1;
+  text-decoration: underline; }
+
 h1 {
   width: 50%;
   margin-left: auto;
@@ -56,4 +60,5 @@ form {
 .back {
   position: fixed;
   display: inline-block;
-  top: 1em; }
+  top: 1.8em;
+  margin-left: 1em; }
