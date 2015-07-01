@@ -12,8 +12,6 @@ local_settings.py
 .idea
 .idea/*
 .envrc
-migrations/
-migrations/*
 
 # Created by https://www.gitignore.io
 
