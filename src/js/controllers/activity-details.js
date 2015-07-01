@@ -4,9 +4,11 @@ var $ = require('jquery');
 var _ = require('underscore');
 var views = require('views');
 var router = require('../router');
+var datepicker = require('../../../node_modules/jquery-ui/datepicker.js')
 
 
 router.route('activities/:id', function (Id) {
+	
 $.ajax({
 			method: 'GET', 
 			url: '/api/activities/'+Id
@@ -32,12 +34,15 @@ $.ajax({
  }
  
  function addStat(data) {
+	 $('.date').datepicker({
+		 dateFormat: "yy-mm-dd"
+		 });
 	 var Id = data.id;
 	 $('.new-stat').on('submit', function(e){
 			e.preventDefault();
-			var date = $('.datepicker').val();
-			var stat = $('.stat').val();
+			var date = $('.date').val();
 			console.log(date);
+			var stat = $('.stat').val();
 			console.log(stat);
 			var csrftoken = getCookie('csrftoken'); 
 			console.log(Id);
