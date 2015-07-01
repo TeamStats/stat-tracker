@@ -1,3 +1,59 @@
+body {
+  font-family: sans-serif;
+  color: #FF5300; }
+
 .ui-datepicker {
   padding: 1em;
   background-color: white; }
+
+.nav {
+  display: inline;
+  padding: 0.5em;
+  width: 100%;
+  float: right;
+  text-align: right; }
+
+.nav span {
+  padding-right: 0.3em; }
+
+.nav a {
+  font-size: 0.9em; }
+
+a {
+  color: #00AB6F;
+  text-decoration: none; }
+
+h1 {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+.commands {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+.commands a {
+  padding: 0.5em; }
+
+.activity-list {
+  padding-top: 1em;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  list-style-type: none;
+  line-height: 1.5em; }
+
+form {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+
+.back {
+  position: fixed;
+  display: inline-block;
+  top: 1em; }

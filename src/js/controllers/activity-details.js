@@ -30,7 +30,7 @@ $.ajax({
     var activityTemplate = views['activity-details'];
     var templateFn = _.template(activityTemplate, { variable: 'm' });
 	var activityHTML = templateFn(data);
-    $('.nav-content').html(activityHTML);
+    $('.main-content').prepend(activityHTML);
 	return data;
  }
  
