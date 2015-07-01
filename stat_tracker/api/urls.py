@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from rest_framework import routers
+from users import views as user_views
 
 from . import views as api_views
 
@@ -7,7 +8,8 @@ from . import views as api_views
 router = routers.DefaultRouter()
 
 router.register(r'activities', api_views.ActivityViewSet, base_name='activity')
-router.register(r'users', api_views.UserViewSet, base_name='user')
+router.register(r'users', user_views.UserViewSet, base_name='user')
+
 
 urlpatterns = [
     url(r'^', include(router.urls)),

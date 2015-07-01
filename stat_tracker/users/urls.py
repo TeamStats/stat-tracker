@@ -1,11 +1,10 @@
-from django.contrib.auth import views
 from django.conf.urls import include, url
-from . import views as users_views
+from users import views as user_views
+from django.contrib.auth import views
 
-# urlpatterns = [
-#     url(r'^login/$', views.login, {'template_name': 'users/login.html'}, name="login"),
-#     #url(r'^logout/$', views.logout, {'next_page': 'qanda:questions'}, name='logout'),
-#     url(r'^register/$', users_views.AddUserView.as_view(), name="user_register"),
-#     # url(r'^profile/(?P<prof_id>\d+)$', users_views.ShowProfileDetailView.as_view(), name="profile"),
-#     url(r'^logout/$', views.logout, {'next_page': 'login'}, name='logout'),
-# ]
+
+urlpatterns = [
+    url(r'^login/$', views.login, {'template_name': 'login.html'}, name="login"),
+    url(r'^register/$', user_views.AddUserView.as_view(), name="user_register"),
+    url(r'^logout/$', views.logout, {'next_page': 'login'}, name='logout'),
+]
