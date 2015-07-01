@@ -12,9 +12,8 @@ $.ajax({
 	method: 'GET', 
 	url: '/api/activities/'+Id+'/stat/'	
 	})
-	.done(function(data){
-		console.log(data);
-	});
+	.then(renderList);
+	
 $.ajax({
 			method: 'GET', 
 			url: '/api/activities/'+Id
@@ -22,20 +21,16 @@ $.ajax({
 		.then(renderDetails)
 		.then(addStat);
 		
+		
    		
 });
-
-	
-		  
-		  
-
 
  function renderDetails(data) {
 	console.log(data);
     var activityTemplate = views['activity-details'];
     var templateFn = _.template(activityTemplate, { variable: 'm' });
-    var activityHTML = templateFn(data);
-    $('.main-content').html(activityHTML);
+	var activityHTML = templateFn(data);
+    $('.nav-content').html(activityHTML);
 	return data;
  }
  
@@ -54,7 +49,7 @@ $.ajax({
 			console.log(Id);
 			$.ajax({
 				beforeSend: function (request){
-				console.log(csrftoken)
+				console.log(csrftoken);
 	            request.setRequestHeader('X-CSRFToken', csrftoken);
 	           	},
 				method: 'POST', 
@@ -64,7 +59,7 @@ $.ajax({
 			$('.new-stat').each(function(){
     		this.reset();
 			});
-			document.location = '#/activities/'+Id;
+			window.location.reload();
 		});
 		});
  }
@@ -84,4 +79,14 @@ $.ajax({
    }
    console.log(cookieValue);
    return cookieValue;
+}
+
+function renderList (data) {
+	console.log(data);
+	var statTemplate = views['activity-stat'];
+	console.log(statTemplate);
+    var templateFn = _.template(statTemplate, { variable: 'n' });
+	
+    var statHTML = templateFn ({ stats: data });
+	$('.main-content').html(statHTML);
 }
