@@ -1,11 +1,9 @@
 import datetime
 from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.shortcuts import render
 from rest_framework import viewsets, permissions, generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import serializers
-
 
 from .serializers import StatSerializer, ActivitySerializer
 from .models import Stat, Activity
@@ -19,15 +17,15 @@ class ActivityViewSet(viewsets.ModelViewSet):
     #pagination_class = StandardResultsSetPagination
 
     def get_queryset(self):
-        queryset = Activity.objects.filter(user=self.request.user)
+        if self.request.user.is_authenticated():
+            queryset = Activity.objects.filter(user=self.request.user.profile)
+        else:
+            queryset = []
         return queryset
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    def get_queryset(self):
-        queryset = Activity.objects.filter(user = self.request.user.profile)
-        return queryset
 
 
 class StatListCreateView(generics.ListCreateAPIView):
@@ -54,5 +52,6 @@ class StatUpdateView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StatSerializer
     queryset = Stat.objects.all()
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
 
