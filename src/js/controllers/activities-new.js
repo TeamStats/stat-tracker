@@ -24,7 +24,7 @@ router.route('activities/new', function () {
 			data: {'title': data}
   		}).done(function (data){
 			console.log(data);
-		
+			document.location = '#/activities';
 		});
 	});
 });

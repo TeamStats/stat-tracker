@@ -61,8 +61,10 @@ $.ajax({
 				url: '/api/activities/'+Id+'/stat/',
 				data: {'stat': stat, 'timestamp': date}
   			}).done(function (data){
-			  alert('saved');
-			console.log(data);
+			$('.new-stat').each(function(){
+    		this.reset();
+			});
+			document.location = '#/activities/'+Id;
 		});
 		});
  }
