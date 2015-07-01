@@ -6,7 +6,7 @@ from rest_framework import viewsets, permissions, generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import serializers
 
-from .serializers import StatSerializer, ActivitySerializer, UserSerializer
+from .serializers import StatSerializer, ActivitySerializer
 from .models import Stat, Activity
 #from users.models import Profile
 
@@ -17,12 +17,13 @@ class ActivityViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     #pagination_class = StandardResultsSetPagination
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user.profile)
-
     def get_queryset(self):
         queryset = Activity.objects.filter(user=self.request.user.profile)
         return queryset
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 
 class StatListCreateView(generics.ListCreateAPIView):
@@ -51,12 +52,4 @@ class StatUpdateView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    serializer_class = UserSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    #pagination_class = StandardResultsSetPagination
-
-    def get_queryset(self):
-        queryset = User.objects.filter(pk=self.request.user.pk)
-        return queryset
 
