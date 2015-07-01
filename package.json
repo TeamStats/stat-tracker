@@ -27,6 +27,7 @@
     "gulp-watch": "^4.2.4",
     "jquery": "^2.1.4",
     "parsleyjs": "^2.1.2",
+    "pickadate": "^3.5.6",
     "uglifyify": "^3.0.1",
     "underscore": "^1.8.3",
     "vinyl": "^0.5.0",

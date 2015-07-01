@@ -24,7 +24,7 @@ class ActivitySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Activity
-        fields = ('url', 'user', 'title', 'stat_set', 'stat',)
+        fields = ('url', 'id', 'user', 'title', 'stat_set', 'stat',)
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
